@@ -1,0 +1,42 @@
+This project contains 3 files and a folder defining the ontology used to describe the triples
+
+* GoogleHistoryDownloader.py:
+	The program works only if you have turned on the Google History service to keep your Google search record.
+	It will download all the history search from Google in rss 2.0 format and saves the file to out folder you specify
+	- The program does not detect the earliest search history record each user has on Google, the user has to specify the specific
+	  starting date to download
+	- For first time use, please find the earliest date of your Google search entry at : https://www.google.com/history/
+	
+	e.g. Signed in with Google id/passwd and click on the "Oldest" link at the button of the page, 
+	Google will take you to the earliest date. Say it's 2006 Jan 05
+	
+	User this date to run the program with "python GoogleHistoryDownloader -u yourid -p yourpasswd --start 20060105"
+	
+* rss2rdf.py
+	Use this program to turn all search history from Google(originally in rss2.0 format) to triples (in N3 format).
+	e.g. python rss2rdf -o data/ -f googlerss/
+	use "-o" to specify the output folder
+	    "-f" to specify the input folder of the files
+	    
+* sqlite2rdf.py
+	This program turns Firefox browse history into rdf format
+	
+* /ns
+  This folder has ontology definition for browsing history in Firefox (stored at places.sqlite db). 
+  For detail information about what's in Firefox places.sqlite file, plase visit http://www.firefoxforensics.com/
+  - /ns/browser-hitory.n3 
+  - /ns/browser-behavior.n3
+  
+  These two files map to table named 'moz_historyvisits' in places.sqlite . The browser-history maps to most of the columns in table 
+  moz_historyvisits. The browser-behavior.n3 maps to column named 'visit_type'in table moz_historyvisits. 
+  
+  - /ns/browser-place.n3
+  This file maps to table named 'moz_places' in places.sqlite . 
+  
+  - /ns/search-hisotry.n3
+  
+  This file gives the definition of Google search history. Similar to those in the RSS output from Google history service with slight 
+  modification.
+   
+   
+	 

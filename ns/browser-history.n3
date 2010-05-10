@@ -1,0 +1,35 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix h: <http://foolme.csail.mit.edu/ns/browser-history#> .
+@prefix p: <http://foolme.csail.mit.edu/ns/browser-place#> .
+@prefix b: <http://foolme.csail.mit.edu/ns/browsing-behavior#> .
+
+<> rdfs:comment "Definition of firefox browser history, maps to table 'moz_places' in places.sqlite file with slight modification".
+
+
+h:history	rdf:type  rdfs:Class;
+			rdfs:label "Web browser history"^^xsd:string ;
+			rdfs:comment "Web browser history by firefox"^^xsd:string .
+			
+h:from	rdf:type 		rdf:Property;
+			rdfs:label "The URL that the user navigated to this URL from"^^xsd:string;
+			rdfs:range		p:history;
+			rdfs:domain 	h:history .
+			
+h:place		rdf:type 		rdf:Property;
+			rdfs:comment 	"Web browser place"^^xsd:string ;
+			rdfs:range		p:place;
+			rdfs:domain		h:history.
+			
+h:visit_date	rdf:type	rdf:Property;
+			rdfs:label		"PRTime representation of date"^^xsd:string;
+			rdfs:comment 	"Date and times that this visit occoured, presented with PRTime"^^xsd:string;
+			rdfs:range		xsd:long;
+			rdfs:domain		h:history.		
+			
+			
+				
+
+			

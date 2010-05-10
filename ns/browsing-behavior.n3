@@ -1,0 +1,41 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix h: <http://foolme.csail.mit.edu/ns/browser-history#> .
+@prefix p: <http://foolme.csail.mit.edu/ns/browser-place#> .
+@prefix b: <http://foolme.csail.mit.edu/ns/browsing-behavior#> .
+
+
+b:behavior	rdf:type  rdfs:Class;
+			rdfs:label "Navigate method"^^xsd:string ;
+			rdfs:comment "Records the means by which the user naviaged to this URL. Maps to column named visit_type in table moz_historyvisits of places.sqlite."^^xsd:string .
+			
+b:followed	rdf:type 		rdf:Property;
+			rdfs:comment	"The user followed a link."^^xsd:strin;
+			rdfs:subPropertyOf	h:from .
+			
+b:fromhistory rdf:type		rdf:Property;
+			rdfs:comment	"The user typed URL in the URL bar or selected it from URL bar autocomplete results, clicked on it the history query in the personal toolbar or places organizer."^^xsd:string;
+			rdfs:subPropertyOf	h:from .
+			
+b:bookmark	rdf:type		rdf:Property;
+			rdfs:comment	"The user clicked on a bookmark."^^xsd:string;
+			rdfs:subPropertyOf	h:from .
+			
+			
+b:redirect	rdf:type		rdf:Property;
+			rdfs:comment	"The user got here via a permanent redirect (HTTP 301)."^^xsd:string;
+			rdfs:subPropertyOf	h:from	.
+			
+b:tmpRedirect	rdf:type	rdf:Property;
+			rdfs:comment	"The user got here via a temporary redirect (HTTP 302/307)."^^xsd:string;
+			rdfs:subPropertyOf	h:from	.
+		
+b:download		rdf:type	rdf:Property;
+				rdfs:comment	"It's a download."^^xsd:string;
+				rdfs:subPropertyOf	h:from .
+
+			
+			
+			

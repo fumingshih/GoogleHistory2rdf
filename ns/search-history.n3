@@ -1,0 +1,45 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix g: <http://foolme.csail.mit.edu/ns/search-history#> .
+
+<> rdfs:comment "Definition of google search history".
+
+g:history	rdf:type  rdfs:Class;
+			rdfs:label "Google search history"^^xsd:string .
+
+g:query		rdf:type 		rdfs:Class;
+			rdfs:subClassOf	g:history;
+			rdfs:comment	"Specify the history is either a query"^^xsd:string .
+g:result		rdf:type 		rdfs:Class;
+			rdfs:subClassOf	g:history;
+			rdfs:comment	"Specify the history is a search result"^^xsd:string .
+			
+			
+g:queryTerm		rdf:type 		rdf:Property;
+				rdfs:domain		g:query;
+				rdfs:comment	"The query a user typed into Google search"^^xsd:string .
+				
+g:resultTitle	rdf:type		rdf:Property;
+				rdfs:domain		g:result;
+				rdfs:comment	"The web page tile or link title of the search results"^^xsd:string .
+				
+				
+				
+g:link	rdf:type 		rdf:Property;
+		rdfs:comment	"Either a link of the search result or link of google search's http request"^^xsd:string .
+				
+				
+g:date		rdf:type 		rdf:Property;
+			rdfs:comment	"The date of firing a search request or getting a search result"^^xsd:string .
+				
+				
+g:resultClicked	rdf:type 		rdf:Property;
+				rdfs:domain		g:query;
+				rdfs:comment	"If it's a query, it's the actual counts that a user actually clicked on the search results with that query."^^xsd:string .
+					
+g:from			rdf:type 		rdf:Property;
+				rdfs:range		g:history;
+				rdfs:comment	"If the history object it's a query result, then this will specify which query it derived from."^^xsd:string .
+				
+				

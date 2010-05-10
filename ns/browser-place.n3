@@ -1,0 +1,40 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix h: <http://foolme.csail.mit.edu/ns/browser-history#> .
+@prefix p: <http://foolme.csail.mit.edu/ns/browser-place#> .
+@prefix b: <http://foolme.csail.mit.edu/ns/browsing-behavior#> .
+
+<> rdfs:comment "Definition of firefox browser places".
+
+
+p:place 	rdf:type  rdfs:Class;
+			rdfs:label "URL visited"^^xsd:string ;
+			rdfs:comment "URL visited by firefox and the information associated with that particular URL"^^xsd:string .
+			
+p:url 	rdf:type  rdf:Property;
+		rdfs:label "URL string"^^xsd:string .
+	 
+		
+p:title			rdf:type  		rdf:Property;
+				rdfs:comment 	"Text shown in the title bar of the web-browser"^^xsd:string .
+				
+				
+p:visitCount	rdf:type  rdf:Property;
+				rdfs:comment	"The number of times that this URL has been visited. Without the history being b:download:"^^xsd:string .
+
+p:hidden		rdf:type  rdf:Property;
+				rdfs:comment "A hidden URL is one that the user did not specifically navigate to. These are commonly embedded pages, i-frames, RSS bookmarks and javascript calls. 0=No, 1=Yes"^^xsd:string .
+				
+				
+p:typed			rdf:type  rdf:Property;
+				rdfs:comment "The user typed directly into the location/URL bar. This can occur by either the user typing a complete URL and pressing enter, or by typing in a partial URL/keyword and then selecting a suggestion shown in the auto-complete drop-down bar."^^xsd:string .
+
+p:lastVisitDate	rdf:type rdf:Property;
+				rdfs:label		"PRTime representation of date"^^xsd:string;
+				rdfs:comment 	"Date and times that this place is last visited, presented with PRTime"^^xsd:string;
+				rdfs:range		xsd:long;
+ 				rdfs:domain		p:place .
+				
+				
